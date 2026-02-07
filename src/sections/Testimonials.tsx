@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronLeft, ChevronRight, Quote, Youtube, Award, Trophy } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, Youtube, Award, Trophy, User } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -184,12 +184,8 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-indigo-500/30">
-                  <img
-                    src={activeTestimonial.image}
-                    alt={activeTestimonial.name}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-16 h-16 rounded-full flex items-center justify-center bg-gradient-accent/20 border-2 border-indigo-500/30">
+                  <User className="w-8 h-8 text-indigo-400" />
                 </div>
                 <div>
                   <div className="font-semibold text-lg">{activeTestimonial.name}</div>

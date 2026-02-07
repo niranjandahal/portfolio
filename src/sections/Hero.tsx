@@ -1,9 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowDown, ChevronDown, Youtube, Github, Linkedin } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const projectImages = [
+  { src: '/project-bhagchal.jpg', alt: 'BhagChal Game', color: 'rgba(99, 102, 241, 0.3)' },
+  { src: '/project-roomfinder.jpg', alt: 'Room Finder', color: 'rgba(59, 130, 246, 0.3)' },
+  { src: '/project-cbdc.jpg', alt: 'CBDC Wallet', color: 'rgba(168, 85, 247, 0.3)' },
+  { src: '/project-homeservice.jpg', alt: 'Home Service', color: 'rgba(245, 158, 11, 0.3)' },
+  { src: '/project-moviehunt.jpg', alt: 'Movie Hunt', color: 'rgba(239, 68, 68, 0.3)' },
+  { src: '/project-diseasedetection.jpg', alt: 'Disease Detection', color: 'rgba(34, 197, 94, 0.3)' },
+  { src: '/project-vrtourism.jpg', alt: 'VR Tourism', color: 'rgba(6, 182, 212, 0.3)' },
+];
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -14,6 +24,16 @@ export default function Hero() {
   const phone2Ref = useRef<HTMLDivElement>(null);
   const orbit1Ref = useRef<HTMLDivElement>(null);
   const orbit2Ref = useRef<HTMLDivElement>(null);
+  const [currentProject, setCurrentProject] = useState(0);
+
+  useEffect(() => {
+    // Project carousel rotation every 3 seconds
+    const interval = setInterval(() => {
+      setCurrentProject((prev) => (prev + 1) % projectImages.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -47,19 +67,19 @@ export default function Hero() {
         1.1
       );
 
-      // Phone mockups orbit entrance
+      // Phone mockups orbit entrance - slow elegant blend animation
       tl.fromTo(
         phone1Ref.current,
-        { rotate: -30, x: 200, opacity: 0 },
-        { rotate: 0, x: 0, opacity: 1, duration: 1 },
+        { opacity: 0, scale: 0.8, filter: 'blur(20px)' },
+        { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power2.out' },
         0.6
       );
 
       tl.fromTo(
         phone2Ref.current,
-        { rotate: 30, x: 300, opacity: 0 },
-        { rotate: 15, x: 0, opacity: 1, duration: 1 },
-        0.8
+        { opacity: 0, scale: 0.8, filter: 'blur(20px)', x: 300, rotate: 30 },
+        { opacity: 1, scale: 1, filter: 'blur(0px)', x: 0, rotate: 15, duration: 2, ease: 'power2.out' },
+        0.9
       );
 
       // Orbital rings
@@ -216,7 +236,7 @@ export default function Hero() {
         </div>
 
         {/* Right Content - Phone Mockups */}
-        <div className="relative hidden lg:block h-[600px]">
+        <div className="relative hidden lg:block h-[900px]">
           {/* Orbital Rings */}
           <div
             ref={orbit1Ref}
@@ -227,32 +247,38 @@ export default function Hero() {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-white/10 rounded-full animate-spin-slower"
           />
 
-          {/* Phone 1 */}
+          {/* Phone 1 - Main Carousel - Centered */}
           <div
             ref={phone1Ref}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 animate-float"
-            style={{ transform: 'translate(-60%, -50%)' }}
+            className="absolute top-[30%] left-1/2 -translate-x-1/2 z-30 animate-float"
+            style={{ transform: 'translate(-60%, -65%) !important' }}
           >
-            <img
-              src="/project-bhagchal.jpg"
-              alt="BhagChal Game App"
-              className="w-64 h-auto drop-shadow-2xl rounded-3xl"
-              style={{ filter: 'drop-shadow(0 25px 50px rgba(99, 102, 241, 0.3))' }}
-            />
+            <div className="relative w-64 h-auto transition-opacity duration-700">
+              <img
+                key={currentProject}
+                src={projectImages[currentProject].src}
+                alt={projectImages[currentProject].alt}
+                className="w-64 h-auto drop-shadow-2xl rounded-3xl hover:scale-105 transition-all duration-700"
+                style={{ filter: `drop-shadow(0 25px 50px ${projectImages[currentProject].color})` }}
+              />
+            </div>
           </div>
 
-          {/* Phone 2 */}
+          {/* Phone 2 - Secondary Project - Centered and offset */}
           <div
             ref={phone2Ref}
-            className="absolute top-1/2 left-1/2 z-10 animate-float-delayed"
-            style={{ transform: 'translate(-20%, -40%) rotate(15deg)' }}
+            className="absolute top-[30%] left-1/2 z-20 animate-float-delayed"
+            style={{ transform: 'translate(-20%, -60%) rotate(15deg) !important' }}
           >
-            <img
-              src="/project-cbdc.jpg"
-              alt="CBDC Wallet App"
-              className="w-56 h-auto drop-shadow-2xl rounded-3xl"
-              style={{ filter: 'drop-shadow(0 25px 50px rgba(168, 85, 247, 0.3))' }}
-            />
+            <div className="relative w-56 h-auto transition-opacity duration-700">
+              <img
+                key={`secondary-${currentProject}`}
+                src={projectImages[(currentProject + 1) % projectImages.length].src}
+                alt={projectImages[(currentProject + 1) % projectImages.length].alt}
+                className="w-56 h-auto drop-shadow-2xl rounded-3xl hover:scale-105 transition-all duration-700"
+                style={{ filter: `drop-shadow(0 20px 40px ${projectImages[(currentProject + 1) % projectImages.length].color})` }}
+              />
+            </div>
           </div>
 
           {/* Floating Elements */}

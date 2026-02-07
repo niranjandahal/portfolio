@@ -112,6 +112,11 @@ export default function Services() {
       id="services"
       className="relative py-32 bg-black overflow-hidden"
     >
+      {/* Subtle Gradient Background */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-3xl" />
+      </div>
+
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div

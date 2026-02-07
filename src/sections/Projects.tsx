@@ -8,6 +8,19 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: 1,
+    title: 'Home Service App',
+    category: 'Service Platform',
+    description:
+      'Dual-role Flutter application connecting customers with service providers. Built for NepFix Digital Services with features like real-time service booking, payment integration, and provider ratings.',
+    image: '/project-homeservice.jpg',
+    tags: ['Flutter', 'Firebase', 'Payments', 'Realtime'],
+    color: '#f59e0b',
+    links: { preview: 'https://homeservice-eosin.vercel.app/', github: '#' },
+    hasLivePreview: true,
+    highlights: ['Dual Role System', 'Real-time Booking'],
+  },
+  {
+    id: 2,
     title: 'BhagChal Game',
     category: 'Game Development',
     description:
@@ -15,7 +28,8 @@ const projects = [
     image: '/project-bhagchal.jpg',
     tags: ['Flutter', 'Firebase', 'Realtime', 'Game'],
     color: '#8b5cf6',
-    links: { preview: '#', github: '#' },
+    links: { preview: 'https://bhagchal.vercel.app/', github: '#' },
+    hasLivePreview: true,
     highlights: ['Realtime Multiplayer', 'Nepali Traditional Game'],
   },
   {
@@ -27,7 +41,8 @@ const projects = [
     image: '/project-roomfinder.jpg',
     tags: ['Flutter', 'Firebase Streams', 'Maps', 'Booking'],
     color: '#3b82f6',
-    links: { preview: '#', github: '#' },
+    links: { preview: 'https://kothakhoj.vercel.app/', github: '#' },
+    hasLivePreview: true,
     highlights: ['Dual Role System', 'Realtime Booking'],
   },
   {
@@ -39,7 +54,8 @@ const projects = [
     image: '/project-cbdc.jpg',
     tags: ['Flutter', 'Node.js', 'Hyperledger', 'Blockchain'],
     color: '#10b981',
-    links: { preview: '#', github: '#' },
+    links: { preview: 'https://cbdc-flutter-app.vercel.app/', github: '#' },
+    hasLivePreview: true,
     highlights: ['Research Grant', 'Blockchain', 'CBDC'],
     award: 'Research Grant Awarded',
   },
@@ -52,11 +68,26 @@ const projects = [
     image: '/project-moviehunt.jpg',
     tags: ['Flutter', 'API Integration', 'TMDB', 'YouTube'],
     color: '#ef4444',
-    links: { preview: '#', youtube: 'https://youtube.com/@fluttertip' },
-    highlights: ['150K+ YouTube Views', 'Trending Movies API'],
+    links: { preview: 'https://moviehunt-flutter.vercel.app/', youtube: 'https://youtube.com/@fluttertip' },
+    hasLivePreview: true,
+    highlights: ['20K+ YouTube Views', 'Trending Movies API'],
   },
   {
     id: 5,
+    title: 'Video Call App MVP',
+    category: 'Communication',
+    description:
+      'Real-time video calling Flutter app integrated with ZegoCloud SDK. Sponsored collaboration project showcasing seamless peer-to-peer video communication.',
+    image: '/project-videocall.jpg',
+    tags: ['Flutter', 'ZegoCloud', 'WebRTC', 'Realtime'],
+    color: '#3b82f6',
+    links: { preview: '', github: '', youtube: 'https://www.youtube.com/watch?v=Gcjw_9sgZ4c' },
+    hasLivePreview: false,
+    hasYoutubeOnly: true,
+    highlights: ['Real-time Video', 'Peer-to-Peer'],
+  },
+  {
+    id: 6,
     title: 'Disease Detection App',
     category: 'AI / Healthcare',
     description:
@@ -64,7 +95,8 @@ const projects = [
     image: '/project-diseasedetection.jpg',
     tags: ['Flutter', 'Flask', 'ML', 'ResNet50', 'VGG16'],
     color: '#22c55e',
-    links: { preview: '#', github: '#' },
+    links: { preview: '', github: 'https://github.com/niranjandahal/diseasedetection' },
+    hasLivePreview: false,
     highlights: ['Hybrid ML Model', 'Image Classification'],
     award: 'Research Grant Awarded',
   },
@@ -77,16 +109,14 @@ const projects = [
     image: '/project-vrtourism.jpg',
     tags: ['Flutter', 'VR', '360° View', 'Tourism'],
     color: '#06b6d4',
-    links: { preview: '#', github: '#' },
+    links: { preview: '', github: 'https://github.com/niranjandahal/VR_Application_Flutter' },
+    hasLivePreview: false,
     highlights: ['24hr Hackathon', '360° VR Experience'],
     award: 'Hackathon Runner-Up',
   },
 ];
 
 const otherProjects = [
-  { name: 'Home Service App', company: 'NepFix Digital Services', type: 'Contract' },
-  { name: 'Live Streaming App', company: 'Zegocloud', type: 'Sponsored' },
-  { name: 'Video Call App', company: 'Zegocloud', type: 'Sponsored' },
   { name: 'Quiz App', desc: 'Interactive learning platform' },
   { name: 'E-commerce App', desc: 'Online shopping solution' },
   { name: 'Food Order App', desc: 'Restaurant ordering system' },
@@ -268,9 +298,6 @@ export default function Projects() {
                 className="px-5 py-3 glass-card rounded-xl text-sm text-white/70 hover:bg-white/10 transition-colors"
               >
                 <span className="font-medium text-white">{proj.name}</span>
-                {proj.company && (
-                  <span className="text-white/50"> • {proj.company}</span>
-                )}
                 {proj.desc && (
                   <span className="text-white/50"> • {proj.desc}</span>
                 )}
@@ -378,28 +405,39 @@ export default function Projects() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-4 pt-4">
-                  <button className="flex-1 py-3 bg-gradient-accent rounded-xl font-semibold text-white flex items-center justify-center gap-2 hover:glow-accent-strong transition-all">
-                    <ExternalLink className="w-4 h-4" />
-                    Live Preview
-                  </button>
-                  <button className="flex-1 py-3 glass-card rounded-xl font-semibold text-white flex items-center justify-center gap-2 hover:bg-white/10 transition-all">
-                    <Github className="w-4 h-4" />
-                    Source Code
-                  </button>
+                <div className="flex gap-4 pt-4 flex-col">
+                  {selectedProject.hasYoutubeOnly ? (
+                    <a
+                      href={selectedProject.links.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 bg-gradient-accent rounded-xl font-semibold text-white flex items-center justify-center gap-2 hover:glow-accent-strong transition-all"
+                    >
+                      <Youtube className="w-4 h-4 text-red-500" />
+                      Watch on YouTube
+                    </a>
+                  ) : selectedProject.hasLivePreview ? (
+                    <a
+                      href={selectedProject.links.preview}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 bg-gradient-accent rounded-xl font-semibold text-white flex items-center justify-center gap-2 hover:glow-accent-strong transition-all"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Preview
+                    </a>
+                  ) : (
+                    <a
+                      href={selectedProject.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 bg-gradient-accent rounded-xl font-semibold text-white flex items-center justify-center gap-2 hover:glow-accent-strong transition-all"
+                    >
+                      <Github className="w-4 h-4" />
+                      View on GitHub
+                    </a>
+                  )}
                 </div>
-                
-                {selectedProject.links.youtube && (
-                  <a
-                    href={selectedProject.links.youtube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-3 glass-card rounded-xl font-semibold text-white flex items-center justify-center gap-2 hover:bg-white/10 transition-all"
-                  >
-                    <Youtube className="w-4 h-4 text-red-500" />
-                    Watch on YouTube
-                  </a>
-                )}
               </div>
             </div>
           </div>
