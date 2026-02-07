@@ -5,7 +5,7 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/portfolio',
+  base: process.env.NODE_ENV === 'production' ? '/portfolio/' : './',
   plugins: [inspectAttr(), react()],
   resolve: {
     alias: {

@@ -1,0 +1,27 @@
+# Vite & Build
+dist/
+dist-ssr/
+*.local
+
+# Dependencies
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
