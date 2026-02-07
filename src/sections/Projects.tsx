@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, X, ExternalLink, Github, Youtube, Award, Trophy } from 'lucide-react';
+import { getAssetPath } from '@/lib/getAssetPath';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +13,7 @@ const projects = [
     category: 'Service Platform',
     description:
       'Dual-role Flutter application connecting customers with service providers. Built for NepFix Digital Services with features like real-time service booking, payment integration, and provider ratings.',
-    image: '/project-homeservice.jpg',
+    image: getAssetPath('/project-homeservice.jpg'),
     tags: ['Flutter', 'Firebase', 'Payments', 'Realtime'],
     color: '#f59e0b',
     links: { preview: 'https://homeservice-eosin.vercel.app/', github: '#' },
@@ -25,7 +26,7 @@ const projects = [
     category: 'Game Development',
     description:
       'Cross-platform real-time multiplayer Nepali traditional board game (Bagh Chal) using Flutter and Firebase. Features online multiplayer, real-time game state sync, and beautiful UI.',
-    image: '/project-bhagchal.jpg',
+    image: getAssetPath('/project-bhagchal.jpg'),
     tags: ['Flutter', 'Firebase', 'Realtime', 'Game'],
     color: '#8b5cf6',
     links: { preview: 'https://bhagchal.vercel.app/', github: '#' },
@@ -38,7 +39,7 @@ const projects = [
     category: 'Rental Platform',
     description:
       'Dual-role room finding and rental platform connecting landlords and tenants, eliminating agents with real-time booking system using Firebase streams.',
-    image: '/project-roomfinder.jpg',
+    image: getAssetPath('/project-roomfinder.jpg'),
     tags: ['Flutter', 'Firebase Streams', 'Maps', 'Booking'],
     color: '#3b82f6',
     links: { preview: 'https://kothakhoj.vercel.app/', github: '#' },
@@ -51,7 +52,7 @@ const projects = [
     category: 'Blockchain / Fintech',
     description:
       'Research Grant Awarded Project - Final Year Project. Digital wallet mobile app based on blockchain technology using Hyperledger Fabric and ChainCode.',
-    image: '/project-cbdc.jpg',
+    image: getAssetPath('/project-cbdc.jpg'),
     tags: ['Flutter', 'Node.js', 'Hyperledger', 'Blockchain'],
     color: '#10b981',
     links: { preview: 'https://cbdc-flutter-app.vercel.app/', github: '#' },
@@ -65,7 +66,7 @@ const projects = [
     category: 'Entertainment',
     description:
       'Movie discovery platform showing trending movies/series with details and trailers. Featured in YouTube tutorial with 150K+ views.',
-    image: '/project-moviehunt.jpg',
+    image: getAssetPath('/project-moviehunt.jpg'),
     tags: ['Flutter', 'API Integration', 'TMDB', 'YouTube'],
     color: '#ef4444',
     links: { preview: 'https://moviehunt-flutter.vercel.app/', youtube: 'https://youtube.com/@fluttertip' },
@@ -78,7 +79,7 @@ const projects = [
     category: 'Communication',
     description:
       'Real-time video calling Flutter app integrated with ZegoCloud SDK. Sponsored collaboration project showcasing seamless peer-to-peer video communication.',
-    image: '/project-videocall.jpg',
+    image: getAssetPath('/project-videocall.jpg'),
     tags: ['Flutter', 'ZegoCloud', 'WebRTC', 'Realtime'],
     color: '#3b82f6',
     links: { preview: '', github: '', youtube: 'https://www.youtube.com/watch?v=Gcjw_9sgZ4c' },
@@ -92,7 +93,7 @@ const projects = [
     category: 'AI / Healthcare',
     description:
       'Research Grant Awarded Project. Identify plant diseases by phone camera using hybrid machine learning model (ResNet50 + VGG16).',
-    image: '/project-diseasedetection.jpg',
+    image: getAssetPath('/project-diseasedetection.jpg'),
     tags: ['Flutter', 'Flask', 'ML', 'ResNet50', 'VGG16'],
     color: '#22c55e',
     links: { preview: '', github: 'https://github.com/niranjandahal/diseasedetection' },
@@ -106,7 +107,7 @@ const projects = [
     category: 'Virtual Reality',
     description:
       'Built in 24-hour hackathon. Tourists can explore Nepal tourist spots in immersive 360° view with physical VR headset support.',
-    image: '/project-vrtourism.jpg',
+    image: getAssetPath('/project-vrtourism.jpg'),
     tags: ['Flutter', 'VR', '360° View', 'Tourism'],
     color: '#06b6d4',
     links: { preview: '', github: 'https://github.com/niranjandahal/VR_Application_Flutter' },

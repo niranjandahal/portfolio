@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeft, ChevronRight, Quote, Youtube, Award, Trophy, User } from 'lucide-react';
+import { getAssetPath } from '@/lib/getAssetPath';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,7 +11,7 @@ const testimonials = [
     id: 1,
     name: 'NepFix Digital Team',
     role: 'Client - Home Service App',
-    image: '/avatar-sarah.jpg',
+    image: getAssetPath('/avatar-sarah.jpg'),
     quote:
       "Niranjan delivered an excellent Home Service App MVP that exceeded our expectations. His Flutter expertise and attention to detail made the project a huge success.",
   },
@@ -18,7 +19,7 @@ const testimonials = [
     id: 2,
     name: 'Zegocloud Team',
     role: 'Sponsor - Live Streaming Projects',
-    image: '/avatar-michael.jpg',
+    image: getAssetPath('/avatar-michael.jpg'),
     quote:
       "Working with Niranjan on our sponsored live streaming and video call apps was a pleasure. He quickly mastered the ZegoCloud SDK and delivered impressive MVPs.",
   },
@@ -26,7 +27,7 @@ const testimonials = [
     id: 3,
     name: 'IOE Research Committee',
     role: 'Research Grant - CBDC Project',
-    image: '/avatar-emily.jpg',
+    image: getAssetPath('/avatar-emily.jpg'),
     quote:
       "Niranjan's CBDC Digital Wallet project demonstrated exceptional understanding of blockchain technology. A well-deserved research grant recipient.",
   },
@@ -34,7 +35,7 @@ const testimonials = [
     id: 4,
     name: 'Hackathon Judges',
     role: 'VR Tourism Nepal - Runner-Up',
-    image: '/avatar-david.jpg',
+    image: getAssetPath('/avatar-david.jpg'),
     quote:
       "Built an impressive VR tourism app in just 24 hours. The 360° immersive experience and technical implementation were outstanding for a hackathon project.",
   },
@@ -42,7 +43,7 @@ const testimonials = [
     id: 5,
     name: 'Flutter Community',
     role: 'YouTube Subscribers',
-    image: '/avatar-lisa.jpg',
+    image: getAssetPath('/avatar-lisa.jpg'),
     quote:
       "Niranjan's Flutter Tips channel has been incredibly helpful. His Movie Hunt tutorial alone has helped thousands of developers learn Flutter with 150K+ views!",
   },

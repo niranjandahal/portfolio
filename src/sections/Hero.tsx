@@ -2,17 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowDown, ChevronDown, Youtube, Github, Linkedin } from 'lucide-react';
+import { getAssetPath } from '@/lib/getAssetPath';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const projectImages = [
-  { src: '/project-bhagchal.jpg', alt: 'BhagChal Game', color: 'rgba(99, 102, 241, 0.3)' },
-  { src: '/project-roomfinder.jpg', alt: 'Room Finder', color: 'rgba(59, 130, 246, 0.3)' },
-  { src: '/project-cbdc.jpg', alt: 'CBDC Wallet', color: 'rgba(168, 85, 247, 0.3)' },
-  { src: '/project-homeservice.jpg', alt: 'Home Service', color: 'rgba(245, 158, 11, 0.3)' },
-  { src: '/project-moviehunt.jpg', alt: 'Movie Hunt', color: 'rgba(239, 68, 68, 0.3)' },
-  { src: '/project-diseasedetection.jpg', alt: 'Disease Detection', color: 'rgba(34, 197, 94, 0.3)' },
-  { src: '/project-vrtourism.jpg', alt: 'VR Tourism', color: 'rgba(6, 182, 212, 0.3)' },
+  { src: getAssetPath('/project-bhagchal.jpg'), alt: 'BhagChal Game', color: 'rgba(99, 102, 241, 0.3)' },
+  { src: getAssetPath('/project-roomfinder.jpg'), alt: 'Room Finder', color: 'rgba(59, 130, 246, 0.3)' },
+  { src: getAssetPath('/project-cbdc.jpg'), alt: 'CBDC Wallet', color: 'rgba(168, 85, 247, 0.3)' },
+  { src: getAssetPath('/project-homeservice.jpg'), alt: 'Home Service', color: 'rgba(245, 158, 11, 0.3)' },
+  { src: getAssetPath('/project-moviehunt.jpg'), alt: 'Movie Hunt', color: 'rgba(239, 68, 68, 0.3)' },
+  { src: getAssetPath('/project-diseasedetection.jpg'), alt: 'Disease Detection', color: 'rgba(34, 197, 94, 0.3)' },
+  { src: getAssetPath('/project-vrtourism.jpg'), alt: 'VR Tourism', color: 'rgba(6, 182, 212, 0.3)' },
 ];
 
 export default function Hero() {
